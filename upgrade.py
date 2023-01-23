@@ -36,7 +36,7 @@ PATH_TO_OCTOPI_VERSION = '/etc/octopi_version'
 
 
 class OctoPi:
-    venv_path = "/home/pi/oprint/"
+    venv_path = "/home/OctoPrint/venv"
 
 
 # Coloured text constants & classes
@@ -331,9 +331,9 @@ def get_env_config(octopi):
     venv_path = None
     config_base = None
     if octopi and not FORCE_CUSTOM:
-        venv_path = "/home/pi/oprint"
+        venv_path = "/home/OctoPrint/venv"
         if not os.path.exists(venv_path):
-            print_c("Hmm, seems like you don't have an environment at /home/pi/oprint", TextColors.YELLOW)
+            print_c("Hmm, seems like you don't have an environment at /home/OctoPrint/venv", TextColors.YELLOW)
             venv_path = None
 
         if venv_path and not check_venv_python(venv_path):
@@ -365,10 +365,10 @@ def get_env_config(octopi):
 
         sys_commands['stop'] = "sudo service octoprint stop"
         sys_commands['start'] = "sudo service octoprint start"
-        config_base = "/home/pi/.octoprint"
+        config_base = "/home/debian/.octoprint"
     else:
         print("Please provide the path to your virtual environment and the config directory of OctoPrint")
-        print("On OctoPi, this would be `/home/pi/oprint` (for the venv), `/home/pi/.octoprint` (for config)\n"
+        print("On OctoPi, this would be `/home/OctoPrint/venv` (for the venv), `/home/debian/.octoprint` (for config)\n"
               "and service commands commands `sudo service octoprint stop/start`")
         while not venv_path:
             try:
